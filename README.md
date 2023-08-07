@@ -13,6 +13,7 @@ You need to modify the environment variables in the `install_wg.yaml` file to ma
 
 - `domain`: The domain where WG-Easy will be accessible.
 - `password`: Password for accessing the WG-Easy management interface.
+- `allowed_ips`: Whitelisted IP's
 
 ## Installation Steps
 
