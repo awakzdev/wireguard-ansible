@@ -1,0 +1,33 @@
+---
+- hosts: all
+  vars:
+    domain: <wg-easy-domain>
+    password: <wg-easy-pw>
+    allowed_ips: <allowed_ips> # Should be in the following format: 192.168.0.1/32, 192.168.0.2/32 ...
+
+  tasks:
+
+    - name: Render docker-compose.yaml template
+      template:
+        src: templates/docker-compose.yaml.j2
+        dest: ~/docker-compose.yaml
+
+    - name: Render wg-easy.conf template
+      template:
+        src: templates/wg-easy.conf.j2
+        dest: ~/wg.easy.conf
+
+    - name: Deploy wg-easy
+      community.docker.docker_compose:
+        project_src: ~/
+
+    # Create SSL certificate using nginx
+    - name: Create SSH Certificate
+      environment:
+        DOMAIN: "{{ domain }}"
+      shell: |
+        docker cp wg.easy.conf nginx:/etc/nginx/conf.d/.
+        docker exec -it nginx /bin/sh -c "
+        certbot --nginx --non-interactive --agree-tos -m webmaster@google.com -d $DOMAIN
+        "
+
