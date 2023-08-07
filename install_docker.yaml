@@ -1,7 +1,5 @@
 ---
 - hosts: all
-  vars:
-    username: ubuntu
 
   become: yes
   tasks:
@@ -35,9 +33,6 @@
         - docker-ce-cli
         - containerd.io
       update_cache: yes
-    
-  - name: add user permissions
-    shell: "usermod -aG docker {{ username }}"
 
   # Installs Docker SDK
   # --
@@ -48,7 +43,6 @@
       name: python3-pip
 
   - name: install python sdk
-    become_user: ubuntu
     pip:
       name:
         - docker 
