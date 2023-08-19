@@ -12,7 +12,7 @@ By following the below steps, you can limit access to your application for speci
 - Add your target hosts to the `inventory.ini` file, including the user and SSH key.
 
 ## Configuring Environment Variables
-Before initiating the installation process, it's essential to configure the environment variables within the install_wg.yaml file to align with your specific setup.
+Before initiating the installation process, it's essential to configure the environment variables within the `install_wg.yaml` file to align with your specific setup.
 
 1. Domain
 - Purpose: Specifies the domain for accessing the WG-Easy management interface.
