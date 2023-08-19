@@ -1,7 +1,7 @@
 # WG-Easy Installation Automation Suite
 With this repository, you can effortlessly set up and manage the WireGuard VPN. We harness the power of Docker Compose and Ansible to deliver a seamless, containerized VPN.
 
-By following the below steps, you can limit access to your application to specific IP addresses. Ensure you monitor your application and server after making changes, and always make backups before making any significant modifications.
+By following the below steps, you can limit access to your application to specific IP addresses.
 
 - [Configuration](#configuring-environment-variables)
 - [Installation](#installation-steps)
