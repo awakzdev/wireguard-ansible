@@ -1,6 +1,9 @@
 # WG-Easy Installation Automation
 This repository contains automation scripts for installing WG-Easy using Docker Compose with Ansible. It simplifies the setup and management of the WireGuard VPN by leveraging containerization and automation.
 
+- [Setting Environment Variables](#environment-variables)
+- [Installation Steps](#installation-steps)
+- [Limiting Access using iptables](#limiting-access-to-your-application-using-iptables)
 ## Prerequisites
 
 - Ensure you have Ansible installed on the control machine.
