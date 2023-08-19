@@ -15,16 +15,16 @@ By following the below steps, you can limit access to your application for speci
 Before initiating the installation process, it's essential to configure the environment variables within the `install_wg.yaml` file to align with your specific setup.
 
 1. Domain
-- Purpose: Specifies the domain for accessing the WG-Easy management interface.
-- Details: Determines the URL or address where you can access the VPN management interface.
+- **Purpose**: Specifies the domain for accessing the WG-Easy management interface.
+- **Details**: Determines the URL or address where you can access the VPN management interface.
 
 3. Password
-- Purpose: Establishes a secure access credential.
-- Details: This password safeguards the WG-Easy management interface, ensuring that only authorized individuals have the privilege to make alterations.
+- **Purpose**: Establishes a secure access credential.
+- **Details**: This password safeguards the WG-Easy management interface, ensuring that only authorized individuals have the privilege to make alterations.
 
 5. Allowed_IPs
-- Purpose: Defines which IP addresses can connect.
-- Details: Enter the IP addresses you trust. This acts as a whitelist, enhancing security by guaranteeing that only recognized devices can access the network.
+- **Purpose**: Defines which IP addresses can connect.
+- **Details**: Enter the IP addresses you trust. This acts as a whitelist, enhancing security by guaranteeing that only recognized devices can access the network.
 
 ## Installation Steps
 ### Step 1: Install Docker-Compose
