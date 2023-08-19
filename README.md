@@ -1,5 +1,5 @@
 # WG-Easy Installation Automation Suite
-With this repository, you can effortlessly set up and manage the WireGuard VPN. We harness the power of Docker Compose and Ansible to deliver a seamless, containerized VPN.
+With this repository, you can effortlessly set up and manage the WireGuard VPN.
 
 By following the below steps, you can limit access to your application for specific IP addresses.
 
@@ -77,3 +77,6 @@ sudo iptables -D INPUT -p tcp --dport 8080 -j DROP
 ```yaml
 sudo iptables-restore < ~/iptables-backup.rules
 ```
+
+# Feedback and Contributions
+Feedback is welcomed, issues, and pull requests! If you have any suggestions or find any bugs, please open an issue on my GitHub repository.
