@@ -1,43 +1,40 @@
-# WG-Easy Installation Automation
-This repository contains automation scripts for installing WG-Easy using Docker Compose with Ansible. It simplifies the setup and management of the WireGuard VPN by leveraging containerization and automation.
+# WG-Easy Installation Automation Suite
+With this repository, you can effortlessly set up and manage the WireGuard VPN. We harness the power of Docker Compose and Ansible to deliver a seamless, containerized VPN.
 
-- [Setting Environment Variables](#environment-variables)
-- [Installation Steps](#installation-steps)
+By following the below steps, you can limit access to your application to specific IP addresses. Ensure you monitor your application and server after making changes, and always make backups before making any significant modifications.
+
+- [Configuration](#configuring-environment-variables)
+- [Installation](#installation-steps)
 - [Limiting Access using iptables](#limiting-access-to-your-application-using-iptables)
 ## Prerequisites
 
 - Ensure you have Ansible installed on the control machine.
 - Add your target hosts to the `inventory.ini` file, including the user and SSH key.
 
-### Environment Variables
+## Configuring Environment Variables
+Before initiating the installation process, it's essential to configure the environment variables within the install_wg.yaml file to align with your specific setup.
 
-You need to modify the environment variables in the `install_wg.yaml` file to match your setup:
+- domain: Specify the domain under which WG-Easy will be accessible. This determines where you can access the VPN management interface.
 
-- `domain`: The domain where WG-Easy will be accessible.
-- `password`: Password for accessing the WG-Easy management interface.
-- `allowed_ips`: Whitelisted IP's
+- password: Set a secure password. This password protects access to the WG-Easy management interface, ensuring only authorized users can make changes.
+
+- allowed_ips: Input the list of IP addresses that are permitted to connect. This is your whitelist for enhancing security and ensuring only known devices can access the network.
 
 ## Installation Steps
-
 ### Step 1: Install Docker-Compose
-
 Run the following command to install Docker and Docker Compose on the target hosts:
-
 ```yaml
 ansible-playbook -i inventory.ini install_docker.yaml
 ```
 ### Step 2: Install WG-Easy
 Run the following command to install WG-Easy using Docker Compose:
-
 ```yaml
 ansible-playbook -i inventory.ini install_wg.yaml
 ```
-
 That's it! Your WG-Easy installation should now be accessible at the domain you specified.
 
 ## Limiting Access to Your Application using iptables
-Backup Current iptables Rules
-
+### Backup Current iptables Rules
 Before making changes, it's a good idea to backup your current iptables rules:
 ```yaml
 sudo iptables-save > ~/iptables-backup.rules
@@ -63,7 +60,7 @@ The rules set with iptables are ephemeral, meaning they will be lost after a sys
 sudo apt-get install iptables-persistent
 sudo netfilter-persistent save
 ```
-If you wish to revert the changes:
+#### If you wish to revert the changes:
 
 1. Remove the specific rules:
 ```yaml
@@ -74,6 +71,3 @@ sudo iptables -D INPUT -p tcp --dport 8080 -j DROP
 ```yaml
 sudo iptables-restore < ~/iptables-backup.rules
 ```
-Conclusion :
-
-By following the above steps, you can limit access to your application to specific IP addresses. Ensure you monitor your application and server after making changes, and always make backups before making any significant modifications.
