@@ -37,7 +37,7 @@ Run the following command to install WG-Easy using Docker Compose:
 ```yaml
 ansible-playbook -i inventory.ini install_wg.yaml
 ```
-That's it! Your WG-Easy installation should now be accessible at the domain you specified.
+That's it! Your WG-Easy installation should now be accessible under the domain variable you specified.
 
 ## Limiting Access to Your Application using iptables
 ### Backup Current iptables Rules
