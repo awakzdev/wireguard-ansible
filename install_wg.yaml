@@ -19,7 +19,7 @@
     - name: Render wg-easy.conf template
       template:
         src: templates/wg-easy.conf.j2
-        dest: /opt/wg.easy.conf
+        dest: /opt/wg-easy.conf
 
     - name: Deploy wg-easy
       community.docker.docker_compose:
@@ -29,7 +29,7 @@
       environment:
         DOMAIN: "{{ domain }}"
       shell: |
-        docker cp /opt/wg.easy.conf nginx:/etc/nginx/conf.d/.
+        docker cp /opt/wg-easy.conf nginx:/etc/nginx/conf.d/.
         docker exec -it nginx /bin/sh -c "
         certbot --nginx --non-interactive --agree-tos -m webmaster@google.com -d $DOMAIN
         "
