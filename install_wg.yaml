@@ -2,9 +2,9 @@
 - hosts: all
   vars:
     # WG-Easy domain name
-    domain: <wg-easy.domain.com>
+    domain: wg-easy.growings.cclab.cloud-castles.com
     # WG-Easy UI password
-    password: <pw>
+    password: admin
     # Whitelisted IP's - Should be in the following format: 192.168.0.1/32, 192.168.0.2/32 ...
     allowed_ips: 0.0.0.0/0
 
