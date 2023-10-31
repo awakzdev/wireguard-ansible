@@ -24,13 +24,15 @@ By following the below steps, you can limit access to your application for speci
    ansible-galaxy install -r requirements.yml
    ```
 
+## Prerequisites
+Please add an A type record pointing your IP address to the domain field environment.
+
 ## Configuring Environment Variables
 Before initiating the installation process, it's essential to configure the environment variables within the `install_wg.yaml` file to align with your specific setup.
 
 1. Domain
    - **Purpose**: Specifies the domain for accessing the WG-Easy management interface.
    - **Details**: Determines the URL or address where you can access the VPN management interface.
-   - **Prerequisites**: Requires you to add an A type record pointing the IP address to your domain.
 
 3. Password
    - **Purpose**: Establishes a secure access credential.
