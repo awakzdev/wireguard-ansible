@@ -10,7 +10,7 @@ By following the below steps, you can limit access to your application for speci
 
 - Ensure you have Ansible installed on the control machine.
 - Add your target hosts to the `inventory.ini` file, including the user and SSH key.
-
+- Add an A type record pointing your IP address to the domain field environment.
 ## Ansible and Dependencies Setup
 
 1. **Upgrade Ansible**:
@@ -23,9 +23,6 @@ By following the below steps, you can limit access to your application for speci
    ```
    ansible-galaxy install -r requirements.yml
    ```
-
-## Prerequisites
-Please add an A type record pointing your IP address to the domain field environment.
 
 ## Configuring Environment Variables
 Before initiating the installation process, it's essential to configure the environment variables within the `install_wg.yaml` file to align with your specific setup.
