@@ -30,12 +30,13 @@ Before initiating the installation process, it's essential to configure the envi
 1. Domain
    - **Purpose**: Specifies the domain for accessing the WG-Easy management interface.
    - **Details**: Determines the URL or address where you can access the VPN management interface.
+   - **Prerequisites**: Requires you to add an A type record pointing the IP address to your domain.
 
-2. Password
+3. Password
    - **Purpose**: Establishes a secure access credential.
    - **Details**: This password safeguards the WG-Easy management interface, ensuring that only authorized individuals have the privilege to make alterations.
 
-3. Allowed_IPs
+4. Allowed_IPs
    - **Purpose**: Defines which IP addresses can connect.
    - **Details**: Enter the IP addresses you trust. This acts as a whitelist, enhancing security by guaranteeing that only recognized devices can access the network.
 
