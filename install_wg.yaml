@@ -39,7 +39,7 @@
 
     - name: Create SSH Certificate
       environment:
-        DOMAIN: "{{ domain }}"
+        DOMAIN: $domain
       shell: |
         docker cp /opt/wg-easy.conf nginx:/etc/nginx/conf.d/.
         docker exec -it nginx /bin/sh -c "
