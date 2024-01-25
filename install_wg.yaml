@@ -21,9 +21,10 @@
         src: templates/wg-easy.conf.j2
         dest: /opt/wg-easy.conf
 
-    - name: Deploy wg-easy
-      community.docker.docker_compose:
-        project_src: /opt/
+    - name: Deploy wg-easy using docker-compose
+      command: docker-compose -f /opt/docker-compose.yaml up -d
+      args:
+        chdir: /opt/
 
     - name: Create SSH Certificate
       environment:
