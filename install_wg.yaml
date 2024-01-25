@@ -11,11 +11,17 @@
   become: yes
   tasks:
 
-    - name: Install Docker Compose
-      get_url:
-        url: "https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}"
-        dest: "/usr/local/bin/docker-compose"
-        mode: 'u+x,g+x'
+    - name: Install Docker Compose (CentOS/RHEL)
+      yum:
+        name: docker-compose
+        state: latest
+      when: ansible_os_family == "RedHat"
+
+    - name: Install Docker Compose (Debian/Ubuntu)
+      apt:
+        name: docker-compose
+        state: latest
+      when: ansible_os_family == "Debian"
 
     - name: Render docker-compose.yaml template
       template:
