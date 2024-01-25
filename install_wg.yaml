@@ -5,11 +5,17 @@
     domain: <wg-easy.domain.com>
     # WG-Easy UI password
     password: <pw>
-    # Whitelisted IP's - Should be in the following format: 192.168.0.1/32, 192.168.0.2/32 ...
+    # Whitelisted IP's
     allowed_ips: 0.0.0.0/0
 
   become: yes
   tasks:
+
+    - name: Install Docker Compose
+      get_url:
+        url: "https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}"
+        dest: "/usr/local/bin/docker-compose"
+        mode: 'u+x,g+x'
 
     - name: Render docker-compose.yaml template
       template:
