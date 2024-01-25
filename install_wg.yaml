@@ -1,27 +1,25 @@
 ---
 - hosts: all
+  vars_prompt:
+    - name: wg_ui_password
+      prompt: "Enter WireGuard UI password"
+      private: yes  # This ensures the input is not displayed
+
   vars:
     # WG-Easy domain name
     domain: <wg-easy.domain.com>
-    # WG-Easy UI password
-    password: <pw>
     # Whitelisted IP's
     allowed_ips: 0.0.0.0/0
 
   become: yes
   tasks:
 
-    - name: Install Docker Compose (CentOS/RHEL)
-      yum:
-        name: docker-compose
-        state: latest
-      when: ansible_os_family == "RedHat"
-
-    - name: Install Docker Compose (Debian/Ubuntu)
-      apt:
-        name: docker-compose
-        state: latest
-      when: ansible_os_family == "Debian"
+    - name: Install Docker Compose
+      get_url:
+        url: "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}"
+        dest: "/usr/local/bin/docker-compose"
+        mode: 'u+x,g+x'
+        force: yes
 
     - name: Render docker-compose.yaml template
       template:
@@ -32,9 +30,11 @@
       template:
         src: templates/wg-easy.conf.j2
         dest: /opt/wg-easy.conf
+      vars:
+        password: "{{ wg_ui_password }}"
 
     - name: Deploy wg-easy using docker-compose
-      command: docker-compose -f /opt/docker-compose.yaml up -d
+      command: /usr/local/bin/docker-compose -f /opt/docker-compose.yaml up -d
       args:
         chdir: /opt/
 
