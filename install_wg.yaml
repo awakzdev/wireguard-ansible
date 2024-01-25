@@ -7,9 +7,10 @@
 
   vars:
     # WG-Easy domain name
-    domain: <wg-easy.domain.com>
+    domain: $domain
     # Whitelisted IP's
     allowed_ips: 0.0.0.0/0
+    password: "{{ wg_ui_password }}"
 
   become: yes
   tasks:
@@ -30,8 +31,6 @@
       template:
         src: templates/wg-easy.conf.j2
         dest: /opt/wg-easy.conf
-      vars:
-        password: "{{ wg_ui_password }}"
 
     - name: Deploy wg-easy using docker-compose
       command: /usr/local/bin/docker-compose -f /opt/docker-compose.yaml up -d
