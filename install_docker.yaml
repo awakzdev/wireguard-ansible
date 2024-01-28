@@ -16,7 +16,7 @@
         - curl
         - gnupg-agent
         - software-properties-common
-      update_cache: yes
+      update_cache: no
 
   - name: add apt-key
     apt_key:

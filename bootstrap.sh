@@ -90,7 +90,7 @@ clone_repo() {
 install_docker() {
     echo "Running the Docker installation playbook..."
     cd ansible-playbooks
-    ansible-playbook -i inventory.ini "${DOCKER_PLAYBOOK}"
+    ansible-playbook --ask-become-pass -i inventory.ini "${DOCKER_PLAYBOOK}"
 }
 
 # Run the WireGuard installation playbook
